@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Neural Network</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Custom styles for this template -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.11.6"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">  
+   
+
+</head>
+
+<body>
+
+    <div id="wrapper" name='wrapper'>
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li >
+                    <a href="#">
+                        <font color='red'>Edit Network Config here ::</font>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Number of itterations</a>
+                    <input type="number" placeholder="Upto 1000" id='itterations' value='100'>
+                </li>
+                <li>
+                    <a href="#">Learning Rate</a>
+                    <input type="number" placeholder="in range of 0 - 1" id="lrate" value='0.5'>
+                </li>
+                <li>
+                    <a href="#">Epoch</a>
+                    <input type="number" placeholder="Upto 100" id="epoch" value="100">
+                </li>
+                <li>
+                    <a href="#">Optimizer</a>
+                    <select id="optimizer" onchange="optchange()">
+                        <option selected>SGD</option>                        
+                        <option>Adagrad</option>
+                        <option>Adadelta</option>
+                        <option>Adam</option>
+                        <option>Adamax</option>
+                        <option>Rmsprop</option>
+                    </select>                   
+                </li>
+                <li>
+                    <a href="#">Loss Function</a>
+                    <select id="loss_function" onchange="losschange()">
+                        <option>AbsoluteDifference</option>
+                        <option>ComputeweightedLoss</option>
+                        <option>CosineDistance</option>
+                        <option selected>MeanSquaredError</option>
+                        <option>Logloss</option>
+                        <option>SoftmaxCrossEntropy</option>
+                    </select>
+                </li>
+                <li>
+                    <a href="#">Activation Function</a>
+                    <select id="activation" onchange="actchange()">
+                        <option selected>sigmoid</option>
+                        <option>elu</option>
+                        <option>relu</option>
+                        <option>selu</option>
+                        <option>softmax</option>
+                        <option>hardsigmoid</option>
+                        <option>softplus</option>
+                        <option>linear</option>
+                    </select>
+                </li><br>                
+            </ul>
+            
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper" name='page-warpper'>
+            <div class="container-fluid">
+                <h1>Neural Network</h1>
+                <p>This is a simple Neural Network made with layers api from Tensorflow.js which is really cool library.</p>
+                <p>You can tweak the hyper parameters from the side bar.</p>     
+                <p>Current learning rate = 0.5 , epoch=100 , itterations=100 (mobile phones may take some time for computing , and may show unidentified loss , please wait for some time to complete the computation)</p>
+                <input type="button" class="btn btn-secondary" value="Run network" onclick="main()">                
+                <br>The loss is :: <p id='txtarea'></p>                
+                <p id='oparea'></p>
+                <p id='model_info'></p>
+                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Edit network Config</a>    
+                                
+            </div>                           
+                <img src="network.jpg" alt="network" height="500">  
+                    
+        </div>
+        <!-- /#page-content-wrapper -->        
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> 
+    <script src="index.js"></script>
+
+    
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>
+<!--[0 , 1 , 0]
+    [1 , 0 , 1]
+    [1 , 1 , 1] -->
